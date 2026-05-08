@@ -1,0 +1,73 @@
+:Author: Oğuzhan Çelik
+:Email:oguz.bugra29@hotmail.com
+:Date: 03/05/2026
+:Revision: 1.0.0
+:License: Public Domain
+
+= Project: Solar Tracker IoT System
+
+This project is an IoT-enabled smart solar tracking system designed to maximize the efficiency of solar panels. The system measures real-time energy data, analyzes it, and automatically directs the panel to the angle with the highest light intensity using a servo motor.
+
+== Key Features
+
+Auto-Scanning Algorithm: Scans the environment every 30 seconds to detect the angle providing the highest voltage.
+
+Smart Power Display: Automatically switches between microwatt (uW) and milliwatt (mW) units based on power consumption.
+
+OLED Display Integration: Displays real-time critical data such as Voltage, Current, Power, Angle, and Cloud connection status on the device.
+
+IoT Cloud Control: Enables manual/auto mode switching and manual angle control via the Arduino IoT Cloud dashboard.
+
+High Precision Measurement: Utilizes the INA219 sensor for high-accuracy energy monitoring.
+
+== Bill of Materials (BOM)
+|===
+| Part Name | Model/Specification | Quantity
+| ESP32 Dev Board | DOIT ESP32 DEVKIT V1 | 1
+| Power Sensor | Adafruit INA219 (16V 400mA mode) | 1
+| Accelerometer & Gyro | Adafruit MPU6050 | 1
+| Servo Motor | Standard Servo (Pin 18) | 1
+| OLED Display | Adafruit SH1106G (128x64 I2C) | 1
+| Resistor | 10k Ohm | 10
+| LED | Red LED | 5
+|===
+
+== Installation Guide
+
+=== Step 1: Install Required Libraries
+Install the following libraries via the Arduino IDE or Cloud Editor:
+
+ArduinoIoTCloud
+
+Adafruit_INA219
+
+Adafruit_MPU6050
+
+Adafruit_SH110X
+
+ESP32Servo
+
+=== Step 2: Assemble the Circuit
+
+I2C Connections: Connect the OLED, INA219, and MPU6050 sensors to the ESP32's SDA (Pin 21) and SCL (Pin 22) pins.
+
+Servo Connection: Connect the signal wire of the servo motor to Pin 18 on the ESP32.
+
+=== Step 3: Upload the Software
+
+Open the arduino_secrets.h file.
+
+Enter your Wi-Fi SSID, Password, and Device Secret Key.
+
+Upload the code to your ESP32 board.
+
+== Usage and Interface
+
+Automatic Mode: The system performs a scan every 30 seconds. The countdown to the next scan is displayed on the "Next" line of the OLED screen.
+
+Manual Mode: You can disable isAutoMode on the IoT Cloud dashboard and adjust the angle manually using the manualAngle slider.
+
+Cloud Status: The bottom of the screen indicates whether the cloud connection is ONLINE or OFFLINE.
+
+== License
+This project is released under the Public Domain license.
